@@ -15,7 +15,8 @@ const appRoutes: Routes = [
         children: [
             //{ path: '', redirectTo: 'list', pathMatch: 'full' }, // Define si hay que cargar un child por defecto al abrir la pagina padre.
             { path: 'list', component: InventoryListComponent },
-            { path: 'detail', component: InventoryDetailComponent }
+            { path: 'detail', component: InventoryDetailComponent },
+            { path: 'detail/:id', component: InventoryDetailComponent }
         ]
     },
     { path: 'contact', component: ContactComponent }

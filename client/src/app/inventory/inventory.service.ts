@@ -12,16 +12,16 @@ import 'rxjs/add/operator/catch';
 export class InventoryService {
 
   private headers = new Headers({'Content-Type' : 'application/json'});
-  private url = 'http://localhost:3000/product';
+  private url = 'http://127.0.0.1:3000/product';
 
-  constructor( private http: Http) { }
-
-  /*getReviews(): Observable<Product[]> {
+  constructor(private http: Http) { }
+  
+  getProducts(): Observable<Inventory[]> {
     let url = `${this.url}`;
     return this.http.get(url)
                .map(r => r.json())
                .catch(this.handleError);
-  }*/
+  }
 
   private handleError(error: Response | any) {
     let errMsg: string;
