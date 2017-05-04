@@ -7,6 +7,7 @@ import { InventoryService } from '../inventory.service';
   selector: 'app-inventory-list',
   templateUrl: './inventory-list.component.html',
   styleUrls: ['./inventory-list.component.css'],
+  providers: [InventoryService] //IMPORTANT! use providers instead of injectables.
 })
 export class InventoryListComponent implements OnInit {
 
