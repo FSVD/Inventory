@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Inventory } from '../inventory.class';
 import { InventoryService } from '../inventory.service';
-
 
 @Component({
   selector: 'app-inventory-list',
@@ -22,7 +22,11 @@ export class InventoryListComponent implements OnInit {
         .subscribe(
           res => this.list = res,
           err => console.log(err),
-          () => console.log(this.list)
+          () => { // When completed execute this function.
+                  for (let item of this.list) {
+                    console.log(item.name+"'s price is: "+item.price);
+                  }
+                }
         )
   }
 

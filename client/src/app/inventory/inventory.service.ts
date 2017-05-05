@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-import { Inventory } from './inventory.class';
-
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/catch';
+
+import { Inventory } from './inventory.class';
 
 @Injectable()
 export class InventoryService {

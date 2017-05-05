@@ -9,7 +9,7 @@ import { InventoryDetailComponent } from './inventory/inventory-detail/inventory
 import { ContactComponent } from './contact/contact.component';
 
 const appRoutes: Routes = [
-    { path: 'home', component: HomeComponent },
+    { path: '', component: HomeComponent },
     { path: 'customer', component: CustomerComponent },
     { path: 'inventory', component: InventoryComponent,
         children: [

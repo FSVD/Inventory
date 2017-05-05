@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cors = require('./config/cors');
 
 var app = express();
 
@@ -17,6 +18,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// set API privileges
+app.use(cors.privileges);
 
 // set API access point file
 var accessPoints = require('./routes/access_points');
