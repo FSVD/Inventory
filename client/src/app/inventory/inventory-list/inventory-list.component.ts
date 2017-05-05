@@ -20,8 +20,8 @@ export class InventoryListComponent implements OnInit {
   ngOnInit() {
     this.service.getProducts()
         .subscribe(
-          rs => this.list = rs,
-          er => console.log(er),
+          res => this.list = res,
+          err => console.log(err),
           () => console.log(this.list)
         )
   }

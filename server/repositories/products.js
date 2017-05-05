@@ -6,8 +6,10 @@ function dbMethods() {
             connection.query('SELECT * FROM product', function(err, result){
                 connection.release();
                 if (err) {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send({state: "Something goes wrong!"});
                 } else {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send(result);
                 }
             })
@@ -19,8 +21,10 @@ function dbMethods() {
             connection.query('SELECT * FROM product WHERE id=?', id, function(err, result){
                 connection.release();
                 if (err) {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send({state: "Something goes wrong!"});
                 } else {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send(result);
                 }
             })
@@ -32,8 +36,10 @@ function dbMethods() {
             connection.query('INSERT INTO product SET ?', data, function(err, result){
                 connection.release();
                 if (err) {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send({state: "Something goes wrong!"});
                 } else {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send({state: "Product inserted!"});
                 }
             })
@@ -45,8 +51,10 @@ function dbMethods() {
             connection.query('UPDATE product SET ? WHERE id = ?', [data, data.id], function(err, result){
                 connection.release();
                 if (err) {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send({state: "Something goes wrong!"});
                 } else {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send({state: "Product updated!"});
                 }
             })
@@ -58,8 +66,10 @@ function dbMethods() {
             connection.query('DELETE FROM product WHERE id = ?', id, function(err, result){
                 connection.release();
                 if (err) {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send({state: "Something goes wrong!"});
                 } else {
+                    res.setHeader('Access-Control-Allow-Origin','*');
                     res.send({state: "Product deleted!"});
                 }
             })

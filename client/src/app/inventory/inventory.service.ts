@@ -19,7 +19,7 @@ export class InventoryService {
   getProducts(): Observable<Inventory[]> {
     let url = `${this.url}`;
     return this.http.get(url)
-               .map(r => r.json())
+               .map(res => res.json())
                .catch(this.handleError);
   }
 
