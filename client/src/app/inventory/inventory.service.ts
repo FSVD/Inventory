@@ -19,9 +19,17 @@ export class InventoryService {
   getProducts(): Observable<Inventory[]> {
     let url = `${this.url}`;
     return this.http.get(url)
-               .map(res => res.json())
-               .catch(this.handleError);
+                    .map(res => res.json())
+                    .catch(this.handleError);
   }
+
+  addProduct(product: Inventory) {
+    let url = `${this.url}`;
+    let productToJson = JSON.stringify(product);
+    return this.http.post(url, productToJson, {headers: this.headers})
+                    .map(res => res.json())
+                    .catch(this.handleError);
+  } 
 
   private handleError(error: Response | any) {
     let errMsg: string;

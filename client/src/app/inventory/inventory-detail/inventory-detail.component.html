@@ -1,4 +1,33 @@
-<br>
-<p>
-  El componente hijo Detalle inventario funciona!
-</p>
+<br><br>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      {{ title }}
+    </div>
+    <div class="card-block">
+      <form novalidate [formGroup]="form">
+        <div class="form-goup">
+          <label for="id">Id</label>
+          <input type="number" class="form-control" id="id" formControlName="id">
+        </div>
+        <div class="form-goup">
+          <label for="name">Producto</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+        <div class="form-goup">
+          <label for="stock">Existencia</label>
+          <input type="number" class="form-control" id="stock" formControlName="stock">
+        </div>
+        <div class="form-goup">
+          <label for="price">Precio</label>
+          <input type="number" class="form-control" id="price" formControlName="price">
+        </div>
+        <div class="form-goup">
+          <label for="vendor">Proveedor</label>
+          <input type="text" class="form-control" id="vendor" formControlName="vendor">
+        </div>
+        <button class="btn btn-default" (click)="saveProduct()">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
