@@ -31,11 +31,20 @@ export class InventoryDetailComponent implements OnInit {
 
   createControls() {
     this.form = this.formBuilder.group({
-      id: '',
-      name: '',
-      stock: '',
-      price: '',
-      vendor: ''
+      id: ['', Validators.required],
+      name: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(45)
+        ])],
+      stock: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(11)
+      ])],
+      price: ['', Validators.required],
+      vendor: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(45)
+      ])]
     })
   }
 
