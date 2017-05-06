@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { InventoryService } from '../inventory.service';
+import { InventoryValidator } from '../inventory.validator';
 
 @Component({
   selector: 'app-inventory-detail',
@@ -31,15 +32,12 @@ export class InventoryDetailComponent implements OnInit {
 
   createControls() {
     this.form = this.formBuilder.group({
-      id: ['', Validators.required],
+      id: ['', Validators.required, InventoryValidator.uniqueValue(this.service)],
       name: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(45)
-        ])],
-      stock: ['', Validators.compose([
-        Validators.required,
-        Validators.maxLength(11)
       ])],
+      stock: ['', Validators.required],
       price: ['', Validators.required],
       vendor: ['', Validators.compose([
         Validators.required,

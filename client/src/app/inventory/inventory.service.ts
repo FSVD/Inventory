@@ -16,6 +16,14 @@ export class InventoryService {
 
   constructor(private http: Http) { }
   
+  checkId(id: number): Observable<Inventory[]> {
+    let url = `${this.url}/${id}`;
+    return this.http.get(url)
+                    .first()
+                    .map(res => res.json())
+                    .catch(this.handleError);
+  }
+
   getProducts(): Observable<Inventory[]> {
     let url = `${this.url}`;
     return this.http.get(url)

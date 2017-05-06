@@ -13,6 +13,9 @@
             <div *ngIf="form.controls.id.errors.required" class="alert alert-danger">
               El campo es requerido
             </div>
+            <div *ngIf="form.controls.id.errors.uniqueValue" class="alert alert-danger">
+              El id ya existe en la base de datos
+            </div>
           </div>
         </div>
         <div class="form-goup">
@@ -31,15 +34,10 @@
         </div>
         <div class="form-goup">
           <label for="stock">Existencia</label>
-          <input type="number" class="form-control" id="stock" formControlName="stock">
+          <input type="number" maxlength="11" class="form-control" id="stock" formControlName="stock">
           <div *ngIf="form.controls.stock.errors && form.controls.stock.touched">
             <div *ngIf="form.controls.stock.errors.required" class="alert alert-danger">
               El campo es requerido
-            </div>
-          </div>
-          <div *ngIf="form.controls.stock.errors && form.controls.stock.touched">
-            <div *ngIf="form.controls.stock.errors.maxlength" class="alert alert-danger">
-              La existencia del producto solo puede tener hasta 11 caracteres
             </div>
           </div>
         </div>
@@ -66,7 +64,8 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-default" (click)="saveProduct()">Submit</button>
+        <br>
+        <button class="btn btn-primary" (click)="saveProduct()" [disabled]="!form.valid">Submit</button>
       </form>
     </div>
   </div>
