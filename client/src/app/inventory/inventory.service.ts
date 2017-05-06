@@ -7,12 +7,14 @@ import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/catch';
 
 import { Inventory } from './inventory.class';
+import { ServerList } from '../../environments/serverlist.class';
 
 @Injectable()
 export class InventoryService {
 
   private headers = new Headers({'Content-Type' : 'application/json'});
-  private url = 'http://127.0.0.1:3000/product';
+  private url = ServerList.domain_dev+"/product";
+  //private url = 'http://127.0.0.1:3000/product';
 
   constructor(private http: Http) { }
   
