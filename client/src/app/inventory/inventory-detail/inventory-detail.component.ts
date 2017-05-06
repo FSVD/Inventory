@@ -51,8 +51,15 @@ export class InventoryDetailComponent implements OnInit {
                 .subscribe(
                   res => console.log(res),
                   err => console.log(err),
-                  () => console.log("Product added!")
+                  () => {
+                          console.log("Product added!");
+                          this.form.reset();
+                        }
                 );
+  }
+
+  resetForm() {
+    this.form.reset();
   }
 
 }

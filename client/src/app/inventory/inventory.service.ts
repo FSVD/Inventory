@@ -13,7 +13,7 @@ import { ServerList } from '../../environments/serverlist.class';
 export class InventoryService {
 
   private headers = new Headers({'Content-Type' : 'application/json'});
-  private url = ServerList.domain_dev+"/product";
+  private url = ServerList.domain+"/product";
   //private url = 'http://127.0.0.1:3000/product';
 
   constructor(private http: Http) { }
