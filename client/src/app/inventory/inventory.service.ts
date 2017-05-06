@@ -18,7 +18,7 @@ export class InventoryService {
 
   constructor(private http: Http) { }
   
-  checkId(id: number): Observable<Inventory[]> {
+  getProductById(id: number): Observable<Inventory[]> {
     let url = `${this.url}/${id}`;
     return this.http.get(url)
                     .first()

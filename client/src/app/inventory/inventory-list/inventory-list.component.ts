@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Inventory } from '../inventory.class';
 import { InventoryService } from '../inventory.service';
@@ -14,7 +15,8 @@ export class InventoryListComponent implements OnInit {
   list: Inventory[];
 
   constructor(
-    private service: InventoryService
+    private service: InventoryService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,11 @@ export class InventoryListComponent implements OnInit {
                   }
                 }
         )
+  }
+
+  selectProduct(item: Inventory) {
+    let link = ['/inventory/detail', item.id];
+    this.router.navigate(link);
   }
 
 }

@@ -11,7 +11,7 @@ export class InventoryValidator {
             var value = control.value;
 
             return new Promise((resolve, reject) => {
-                service.checkId(value).subscribe(
+                service.getProductById(value).subscribe(
                     data => {
                         if (data.length > 0)
                             resolve({uniqueValue:true});
