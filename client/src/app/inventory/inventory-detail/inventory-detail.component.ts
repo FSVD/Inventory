@@ -14,20 +14,29 @@ import { InventoryValidator } from '../inventory.validator';
 })
 export class InventoryDetailComponent implements OnInit {
 
-  title = "Agregar un nuevo producto";
+  title = "";
   form: FormGroup;
   inventory: Inventory[];
+  updating = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: InventoryService,
     private formBuilder: FormBuilder
-  ) { this.createControls(); }
+  ) { }
 
   ngOnInit() {
     let id = this.route.snapshot.params['id'];
-    if (!id) return;
+    if (!id) {
+      this.title = "Agregar un nuevo producto";
+      this.createControlsNewProduct();
+      return;
+    }
+  
+
+    this.title = "Actualizar el producto";
+    this.createControlsExistingProduct();
 
     this.service.getProductById(id)
                 .subscribe(
@@ -35,6 +44,7 @@ export class InventoryDetailComponent implements OnInit {
                   err => console.log("Error %s"+err),
                   () => {
                     if (this.inventory.length > 0) {
+                      this.updating = true;
                       this.form.patchValue({
                         id: this.inventory[0].id,
                         name: this.inventory[0].name,
@@ -49,7 +59,7 @@ export class InventoryDetailComponent implements OnInit {
     console.log("Obtained id: "+id);
   }
 
-  createControls() {
+  createControlsNewProduct() {
     this.form = this.formBuilder.group({
       id: ['', Validators.required, InventoryValidator.uniqueValue(this.service)],
       name: ['', Validators.compose([
@@ -65,8 +75,32 @@ export class InventoryDetailComponent implements OnInit {
     })
   }
 
+  createControlsExistingProduct() {
+    this.form = this.formBuilder.group({
+      id: ['', Validators.required],
+      name: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(45)
+      ])],
+      stock: ['', Validators.required],
+      price: ['', Validators.required],
+      vendor: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(45)
+      ])]
+    })
+  }
+
   saveProduct() {
-    this.service.addProduct(this.form.value)
+    if (this.updating) {
+      this.saveExistingProduct(this.form.value);
+    } else {
+      this.saveNewProduct(this.form.value);
+    }
+  }
+
+  saveNewProduct(inventory: Inventory) {
+    this.service.addProduct(inventory)
                 .subscribe(
                   res => console.log(res),
                   err => console.log(err),
@@ -77,8 +111,26 @@ export class InventoryDetailComponent implements OnInit {
                 );
   }
 
+  saveExistingProduct(inventory: Inventory) {
+    if (!inventory) return;
+    this.service.updateProduct(inventory)
+                .subscribe(
+                  res => console.log(res),
+                  err => console.log(err),
+                  () => {
+                          console.log("Product updated!");
+                          this.showProductList();
+                        }
+                );
+  }
+
   resetForm() {
     this.form.reset();
+  }
+
+  showProductList() {
+    let link = ['/inventory/list'];
+    this.router.navigate(link);
   }
 
 }

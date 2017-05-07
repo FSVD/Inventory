@@ -14,7 +14,7 @@
             <th>Existencia</th>
             <th>Precio</th>
             <th>Proveedor</th>
-            <th></th>
+            <th>Comandos</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +25,8 @@
             <td>{{ item.price }}</td>
             <td>{{ item.vendor }}</td>
             <td>
-              <button class="btn btn-sm btn-primary" (click)="selectProduct(item)">Ver</button>
+              <button class="btn btn-sm btn-primary" (click)="selectProduct(item)">Seleccionar</button>
+              <!--<button class="btn btn-sm btn-primary" (click)="editProduct(item)">Actualizar</button>-->
             </td>
           </tr>
         </tbody>

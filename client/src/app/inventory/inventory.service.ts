@@ -39,6 +39,14 @@ export class InventoryService {
     return this.http.post(url, productToJson, {headers: this.headers})
                     .map(res => res.json())
                     .catch(this.handleError);
+  }
+
+  updateProduct(product: Inventory) {
+    let url = `${this.url}`;
+    let productToJson = JSON.stringify(product);
+    return this.http.put(url, productToJson, {headers: this.headers})
+                    .map(res => res.json())
+                    .catch(this.handleError);
   } 
 
   private handleError(error: Response | any) {

@@ -37,4 +37,9 @@ export class InventoryListComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  /*editProduct(item: Inventory) {
+    let link = ['/inventory/detail', item.id];
+    this.router.navigate(link);
+  }*/
+
 }
