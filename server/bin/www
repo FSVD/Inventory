@@ -87,5 +87,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log("Express server started and listening on port " + port + ". process ID: " + process.pid);
+  console.log("✔ Express server started and listening on port " + port + ". process ID: " + process.pid);
 }
