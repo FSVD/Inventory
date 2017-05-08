@@ -26,20 +26,32 @@ export class InventoryListComponent implements OnInit {
           err => console.log(err),
           () => { // When completed execute this function.
                   for (let item of this.list) {
-                    console.log(item.name+"'s price is: "+item.price);
+                    //console.log(item.name+"'s price is: "+item.price);
                   }
                 }
         )
   }
 
-  selectProduct(item: Inventory) {
+  /*selectProduct(item: Inventory) {
+    let link = ['/inventory/detail', item.id];
+    this.router.navigate(link);
+  }*/
+
+  editProduct(item: Inventory) {
     let link = ['/inventory/detail', item.id];
     this.router.navigate(link);
   }
 
-  /*editProduct(item: Inventory) {
-    let link = ['/inventory/detail', item.id];
-    this.router.navigate(link);
-  }*/
+  deleteProduct(item: Inventory) {
+    if (!item) return
+    this.service.deleteProduct(item.id)
+                .subscribe(
+                  res => console.log(res),
+                  err => console.log(err),
+                  () => {
+                    this.list = this.list.filter(items => items !== item)
+                  }
+                )
+  }
 
 }

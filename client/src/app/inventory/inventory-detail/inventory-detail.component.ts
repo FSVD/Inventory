@@ -77,7 +77,7 @@ export class InventoryDetailComponent implements OnInit {
 
   createControlsExistingProduct() {
     this.form = this.formBuilder.group({
-      id: ['', Validators.required],
+      id: [{value: '', disabled: true}, Validators.required], //Disable id form field to avoid modifications
       name: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(45)
@@ -93,7 +93,7 @@ export class InventoryDetailComponent implements OnInit {
 
   saveProduct() {
     if (this.updating) {
-      this.saveExistingProduct(this.form.value);
+      this.saveExistingProduct(this.form.getRawValue()); //getRawValue includes all values regardless of disabled status
     } else {
       this.saveNewProduct(this.form.value);
     }

@@ -47,6 +47,13 @@ export class InventoryService {
     return this.http.put(url, productToJson, {headers: this.headers})
                     .map(res => res.json())
                     .catch(this.handleError);
+  }
+
+  deleteProduct(id: number) {
+    let url = `${this.url}/${id}`;
+    return this.http.delete(url)
+                    .map(res => res.json())
+                    .catch(this.handleError);
   } 
 
   private handleError(error: Response | any) {

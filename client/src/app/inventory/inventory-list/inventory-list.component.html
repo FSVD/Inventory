@@ -25,8 +25,8 @@
             <td>{{ item.price }}</td>
             <td>{{ item.vendor }}</td>
             <td>
-              <button class="btn btn-sm btn-primary" (click)="selectProduct(item)">Seleccionar</button>
-              <!--<button class="btn btn-sm btn-primary" (click)="editProduct(item)">Actualizar</button>-->
+              <button class="btn btn-sm btn-primary" (click)="editProduct(item)"><i class="fa fa-pencil fa-fw"></i> Modificar</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteProduct(item)" title="Eliminar"><i class="fa fa-trash-o fa-fw"></i></button>
             </td>
           </tr>
         </tbody>
