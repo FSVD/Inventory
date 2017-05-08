@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -6,11 +6,14 @@ import { Inventory } from '../inventory.class';
 import { InventoryService } from '../inventory.service';
 import { InventoryValidator } from '../inventory.validator';
 
+import { SlideComponent } from '../inventoryComponentAnimation';
+
 @Component({
   selector: 'app-inventory-detail',
   templateUrl: './inventory-detail.component.html',
   styleUrls: ['./inventory-detail.component.css'],
-  providers: [InventoryService]
+  providers: [InventoryService],
+  animations: [SlideComponent]
 })
 export class InventoryDetailComponent implements OnInit {
 
@@ -18,6 +21,10 @@ export class InventoryDetailComponent implements OnInit {
   form: FormGroup;
   inventory: Inventory[];
   updating = false;
+
+  @HostBinding('@SlideComponentAnim') SlideComponentAnim = true;
+  @HostBinding('style.display') display = 'block';
+  @HostBinding('style.position') position = 'absolute';
 
   constructor(
     private route: ActivatedRoute,

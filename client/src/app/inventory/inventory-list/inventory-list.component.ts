@@ -1,18 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Inventory } from '../inventory.class';
 import { InventoryService } from '../inventory.service';
 
+import { SlideComponent } from '../inventoryComponentAnimation';
+
 @Component({
   selector: 'app-inventory-list',
   templateUrl: './inventory-list.component.html',
   styleUrls: ['./inventory-list.component.css'],
-  providers: [InventoryService] //IMPORTANT! use providers instead of injectables.
+  providers: [InventoryService], //IMPORTANT! use providers instead of injectables.
+  animations: [SlideComponent]
 })
 export class InventoryListComponent implements OnInit {
 
   list: Inventory[];
+
+  @HostBinding('@SlideComponentAnim') SlideComponentAnim = true;
+  @HostBinding('style.display') display = 'block';
+  @HostBinding('style.position') position = 'absolute';
 
   constructor(
     private service: InventoryService,
