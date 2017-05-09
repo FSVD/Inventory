@@ -22,6 +22,10 @@ function http() {
         app.delete('/product/:id/', function(req, res){
             db.deleteProduct(req.params.id, res);
         })
+
+        app.post('/auth/login/', function(req, res){
+            db.login(req.body, res);
+        })
     }
 }
 

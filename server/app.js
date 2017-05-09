@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cors = require('./config/cors');
 
 var app = express();
 
@@ -20,7 +19,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set API privileges
-app.use(cors.privileges);
+//var cors = require('./config/cors'); // Instead of cors handmade file we will use cors library with authentication
+//app.use(cors.privileges);
+
+// configuring authentication
+var authenticationConfig = require('./config/authentication');
+app.use(authenticationConfig);
 
 // set API access point file
 var accessPoints = require('./routes/access_points');
