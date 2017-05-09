@@ -10,7 +10,8 @@ import { InventoryModule } from './inventory/inventory.module';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'customer', component: CustomerComponent },
-    { path: 'inventory', loadChildren: () => InventoryModule },
+    //{ path: 'inventory', loadChildren: () => InventoryModule }, //IMPORTANT! Arrow function does not work with AoT when it is passed to an NgModule.
+    { path: 'inventory', loadChildren: 'app/inventory/inventory.module' },
     { path: 'contact', component: ContactComponent }
 ];
 
