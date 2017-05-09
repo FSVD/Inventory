@@ -20,7 +20,7 @@ const appRoutes: Routes = [
         ]
     },
     { path: 'contact', component: ContactComponent }
-]
+];
 
 @NgModule ({
     imports: [

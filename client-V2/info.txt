@@ -1,0 +1,2 @@
+Client V2 inventory components have been converted in a stand-alone inventory module so it can be plugged in another application simply copying an pasting de whole inventory folder.
+In a module all the files belog to it with no need to be referenced externally. A module is an independet element in the application.  

@@ -1,0 +1,73 @@
+<br><br>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      {{ title }}
+    </div>
+    <div class="card-block">
+      <form novalidate [formGroup]="form">
+        <div class="form-goup">
+          <label for="id">Id</label>
+          <input type="number" class="form-control" id="id" formControlName="id">
+          <div *ngIf="form.controls.id.errors && form.controls.id.touched">
+            <div *ngIf="form.controls.id.errors.required" class="alert alert-danger">
+              El campo es requerido
+            </div>
+            <div *ngIf="form.controls.id.errors.uniqueValue" class="alert alert-danger">
+              El id ya existe en la base de datos
+            </div>
+          </div>
+        </div>
+        <div class="form-goup">
+          <label for="name">Producto</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+          <div *ngIf="form.controls.name.errors && form.controls.name.touched">
+            <div *ngIf="form.controls.name.errors.required" class="alert alert-danger">
+              El campo es requerido
+            </div>
+          </div>
+          <div *ngIf="form.controls.name.errors && form.controls.name.touched">
+            <div *ngIf="form.controls.name.errors.maxlength" class="alert alert-danger">
+              El nombre del producto solo puede tener hasta 45 caracteres
+            </div>
+          </div>
+        </div>
+        <div class="form-goup">
+          <label for="stock">Existencia</label>
+          <input type="number" maxlength="11" class="form-control" id="stock" formControlName="stock">
+          <div *ngIf="form.controls.stock.errors && form.controls.stock.touched">
+            <div *ngIf="form.controls.stock.errors.required" class="alert alert-danger">
+              El campo es requerido
+            </div>
+          </div>
+        </div>
+        <div class="form-goup">
+          <label for="price">Precio</label>
+          <input type="number" class="form-control" id="price" formControlName="price">
+          <div *ngIf="form.controls.price.errors && form.controls.price.touched">
+            <div *ngIf="form.controls.price.errors.required" class="alert alert-danger">
+              El campo es requerido
+            </div>
+          </div>
+        </div>
+        <div class="form-goup">
+          <label for="vendor">Proveedor</label>
+          <input type="text" class="form-control" id="vendor" formControlName="vendor">
+          <div *ngIf="form.controls.vendor.errors && form.controls.vendor.touched">
+            <div *ngIf="form.controls.vendor.errors.required" class="alert alert-danger">
+              El campo es requerido
+            </div>
+          </div>
+          <div *ngIf="form.controls.vendor.errors && form.controls.vendor.touched">
+            <div *ngIf="form.controls.vendor.errors.maxlength" class="alert alert-danger">
+              El nombre del producto solo puede tener hasta 45 caracteres
+            </div>
+          </div>
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="saveProduct()" [disabled]="!form.valid">Guardar</button>
+        <button class="btn btn-primary" (click)="resetForm()">Limpiar</button>
+      </form>
+    </div>
+  </div>
+</div>
