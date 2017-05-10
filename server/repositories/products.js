@@ -81,7 +81,7 @@ function dbMethods() {
                         var authorizationKey = jwt.sign({
                             user: data.username,
                             role: 'administrator'
-                        }, 'show me the way', {expiresIn: '120s'});
+                        }, 'show me the way', {expiresIn: '300s'});
                         res.send(authorizationKey);
                     }
                 }

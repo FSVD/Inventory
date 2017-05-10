@@ -8,6 +8,7 @@ import { InventoryListComponent } from './inventory-list/inventory-list.componen
 import { InventoryDetailComponent } from './inventory-detail/inventory-detail.component';
 
 import { InventoryService } from './inventory.service';
+import { AuthGuardService } from '../login/authguard.service';
 
 import { InventoryRoutingModule } from './inventory-routing.module';
 
@@ -29,7 +30,8 @@ import { InventoryRoutingModule } from './inventory-routing.module';
         InventoryDetailComponent
     ],
     providers: [
-        InventoryService
+        InventoryService,
+        AuthGuardService
     ]
 })
 

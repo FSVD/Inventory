@@ -25,6 +25,12 @@
           <a href="#" class="nav-link" routerLink="/contact" routerLinkActive="active">Contactos</a>
         </li>
       </ul>
+      <div class="right">
+        <button class="btn btn-outline-success" *ngIf="!auth.isLoggedIn()" (click)="logIn()">Login</button>
+        <span *ngIf="auth.isLoggedIn()">Bienvenido <strong>{{auth.username}}</strong>&nbsp;&nbsp;
+          <button class="btn btn-outline-success" (click)="logOut()">Logout</button>
+        </span>
+      </div>
     </div>
   </nav>
 
