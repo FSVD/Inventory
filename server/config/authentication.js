@@ -6,6 +6,7 @@ var cors = require('cors');
 app.use(cors());
 app.use(expressjwt({secret: 'show me the way'}) // this is the keyword/keyphrase to generate authorization token
    .unless({path: [
+       '/',
        '/auth/login'
    ]}));
 
