@@ -10,7 +10,6 @@ import { SlideComponent } from '../inventoryComponentAnimation';
   selector: 'app-inventory-list',
   templateUrl: './inventory-list.component.html',
   styleUrls: ['./inventory-list.component.css'],
-  providers: [InventoryService], //IMPORTANT! use providers instead of injectables.
   animations: [SlideComponent]
 })
 export class InventoryListComponent implements OnInit {

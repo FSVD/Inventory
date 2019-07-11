@@ -27,6 +27,10 @@
 npm-debug.log
 testem.log
 /typings
+.DS_Store
+npm-debug.log*
+node_modules
+package-lock.json
 
 # e2e
 /e2e/*.js

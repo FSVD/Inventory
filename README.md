@@ -1,26 +1,23 @@
-# MEAN Stack app practice
+# Inventory
 
-MEAN - MySQL, Express, Angular 2, Node, Bootstrap 4
-<br>
-<br>
-### STEPS:
+A client-server app developed for practice purpouse<br>
 
-1) Clone repository.
+## Key features:
+Clustering (Multiprocess), Authentication
 
-##### START CLIENT:
+## Built With MEAN stack:
+MySQL<br>
+Express<br>
+Angular 2<br>
+Node JS<br>
 
-2) Open cmd prompt and go to "client" folder
-3) Start client typing "ng serve"
-4) Open a browser and go to "localhost:4200"
-
-##### START SERVER:
-
-2) Open cmd prompt and go to "server" folder
-3) Start server typing "npm start"
-4) Open a browser and go to "localhost:3000"
-
-##### REQUIREMENTS:
-
-Install Node (https://nodejs.org/es/)<br>
-Install Express via npm<br>
-Install angular-cli via npm
+## Installing:
+1) Create a new schema in your MySQL DDBB executing "Inventory-Schema.sql".
+2) Open command prompt in "client" folder.
+4) Install project dependencies > "npm install".
+5) Run client > "npm start".
+6) Open yuor web browser and go to "http://localhost:4200".
+2) Open command prompt in "server" folder.
+4) Install project dependencies > "npm install".
+5) Run server > "npm start".
+6) Open yuor web browser and go to "http://localhost:3000".

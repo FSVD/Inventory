@@ -12,7 +12,6 @@ import { SlideComponent } from '../inventoryComponentAnimation';
   selector: 'app-inventory-detail',
   templateUrl: './inventory-detail.component.html',
   styleUrls: ['./inventory-detail.component.css'],
-  providers: [InventoryService],
   animations: [SlideComponent]
 })
 export class InventoryDetailComponent implements OnInit {
@@ -36,13 +35,13 @@ export class InventoryDetailComponent implements OnInit {
   ngOnInit() {
     let id = this.route.snapshot.params['id'];
     if (!id) {
-      this.title = "Agregar un nuevo producto";
+      this.title = "Add new product";
       this.createControlsNewProduct();
       return;
     }
   
 
-    this.title = "Actualizar el producto";
+    this.title = "Update product details";
     this.createControlsExistingProduct();
 
     this.service.getProductById(id)

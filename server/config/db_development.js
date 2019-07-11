@@ -11,7 +11,7 @@ function connection() {
 			host: '127.0.0.1',
 			user: 'dev',
 			password: 'dev',
-			database: 'mean_Practice',
+			database: 'inventory',
 			dateStrings: 'date', // Force MySQL return TIMESTAMP, DATETIME, DATE as string.
 			timezone: "local"
 		})

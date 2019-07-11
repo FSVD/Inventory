@@ -12,15 +12,23 @@ import { ServerList } from '../../environments/serverlist.class';
 @Injectable()
 export class InventoryService {
 
-  private headers = new Headers({'Content-Type' : 'application/json'});
+  private options;
   private url = ServerList.domain+"/product";
   //private url = 'http://127.0.0.1:3000/product';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+
+    let authorizationKey = localStorage.getItem('authorizationKey');
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+      'Authorization' : 'Bearer ' + authorizationKey
+    });
+    this.options = new RequestOptions({headers: headers});
+  }
   
   getProductById(id: number): Observable<Inventory[]> {
     let url = `${this.url}/${id}`;
-    return this.http.get(url)
+    return this.http.get(url, this.options)
                     .first()
                     .map(res => res.json())
                     .catch(this.handleError);
@@ -28,7 +36,7 @@ export class InventoryService {
 
   getProducts(): Observable<Inventory[]> {
     let url = `${this.url}`;
-    return this.http.get(url)
+    return this.http.get(url, this.options)
                     .map(res => res.json())
                     .catch(this.handleError);
   }
@@ -36,7 +44,7 @@ export class InventoryService {
   addProduct(product: Inventory) {
     let url = `${this.url}`;
     let productToJson = JSON.stringify(product);
-    return this.http.post(url, productToJson, {headers: this.headers})
+    return this.http.post(url, productToJson, this.options)
                     .map(res => res.json())
                     .catch(this.handleError);
   }
@@ -44,14 +52,14 @@ export class InventoryService {
   updateProduct(product: Inventory) {
     let url = `${this.url}`;
     let productToJson = JSON.stringify(product);
-    return this.http.put(url, productToJson, {headers: this.headers})
+    return this.http.put(url, productToJson, this.options)
                     .map(res => res.json())
                     .catch(this.handleError);
   }
 
   deleteProduct(id: number) {
     let url = `${this.url}/${id}`;
-    return this.http.delete(url)
+    return this.http.delete(url, this.options)
                     .map(res => res.json())
                     .catch(this.handleError);
   } 

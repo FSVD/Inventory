@@ -12,19 +12,25 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a href="#" class="navbar-brand">MEAN</a>
+    <a href="#" class="navbar-brand">Inventory</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link" routerLink="/customer" routerLinkActive="active">Clientes</a>
+          <a href="#" class="nav-link" routerLink="/customer" routerLinkActive="active">Customers</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" routerLink="/inventory" routerLinkActive="active">Inventario</a>
+          <a href="#" class="nav-link" routerLink="/inventory" routerLinkActive="active">Products</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" routerLink="/contact" routerLinkActive="active">Contactos</a>
+          <a href="#" class="nav-link" routerLink="/contact" routerLinkActive="active">Contact Us</a>
         </li>
       </ul>
+      <div class="right">
+        <button class="btn btn-outline-success" *ngIf="!auth.isLoggedIn()" (click)="logIn()">Login</button>
+        <span *ngIf="auth.isLoggedIn()">Welcome <strong>{{auth.username}}</strong>&nbsp;&nbsp;
+          <button class="btn btn-outline-success" (click)="logOut()">Logout</button>
+        </span>
+      </div>
     </div>
   </nav>
 
