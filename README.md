@@ -1,6 +1,7 @@
 # Inventory
 
-A client-server app developed for practice purpouse<br>
+A client-server app to manage a products inventory.<br>
+Developed for practice purpouse.<br>
 
 ## Key features:
 Clustering (Multiprocess), Authentication
