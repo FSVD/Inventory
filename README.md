@@ -22,4 +22,4 @@ Node JS<br>
 4) Install project dependencies > "npm install".
 5) Run server > "npm start".
 6) Open yuor web browser and go to "http://localhost:3000".
-7) To login into the Products section une > Username: Testuser and Password: userpwd.
+7) To login into the Products section use > Username: Testuser and Password: userpwd.
