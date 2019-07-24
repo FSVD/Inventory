@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./cluster.js"
+    "dev": "nodemon ./cluster.js",
+    "start": "node ./cluster.js"
   },
   "dependencies": {
     "body-parser": "1.17.1",
